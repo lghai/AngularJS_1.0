@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body ng-app="myApp" ng-controller="MyController">
+<div id="index">
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+  <p>
+    <span>test</span>
+  </p>
+</div>
+<script type='text/javascript' src="../../js/angular-1.5.5/angular.js"></script>
+<script type='text/javascript' src="../../js/jquery/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+  angular.module('myApp', [])
+    .controller('MyController', function ($scope) {
+      $scope.srcollWindow = function (){
+        var location = $('#index').height();
+        window.scrollTo(0,location);
+      }
+      setTimeout(function (){
+        $scope.srcollWindow();
+      },100)
+    });
+</script>
+</body>
+</html>
