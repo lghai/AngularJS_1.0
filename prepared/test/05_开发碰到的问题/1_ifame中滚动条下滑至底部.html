@@ -6,63 +6,21 @@
 </head>
 <body ng-app="myApp" ng-controller="MyController">
 <div id="index">
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
-  <p>
-    <span>test</span>
-  </p>
+  <p>Hello {{name}}!</p>
+
+  <a href="#" target="_blank">Try it out!</a>
+
+  <div style="height: 2000px">PUSH IT DOWN!</div>
+  <div>
+    <div id="myAnchor">You found me!</div>
+  </div>
 </div>
 <script type='text/javascript' src="../../js/angular-1.5.5/angular.js"></script>
 <script type='text/javascript' src="../../js/jquery/jquery-1.11.1.js"></script>
 <script type="text/javascript">
   angular.module('myApp', [])
-    .controller('MyController', function ($scope) {
+    .controller('MyController', function ($scope,$anchorScroll,$timeout,$location) {
+      //方法1
       $scope.srcollWindow = function (){
         var location = $('#index').height();
         window.scrollTo(0,location);
@@ -70,6 +28,19 @@
       setTimeout(function (){
         $scope.srcollWindow();
       },100)
+      //方法2
+     $scope.name = 'World';
+      $timeout(function() {
+        $anchorScroll('myAnchor');
+      },100);
+      //方法3
+      $scope.scrollWindow= function(){
+        $location.hash('myAnchor');
+        $anchorScroll();
+      }
+      $timeout(function() {
+        $scope.scrollWindow();
+      },100);
     });
 </script>
 </body>
