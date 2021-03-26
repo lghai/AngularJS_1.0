@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="../../js/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .rating-stars {
+        position: relative;
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .empty-stars {
+        color: #aaa;
+    }
+    .filled-stars {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: auto;
+        color: #fde16d;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-text-stroke: 1px #777;
+        text-shadow: 1px 1px #999;
+    }
+    .star {
+        display: inline-block;
+        margin: 0 3px;
+        text-align: center;
+    }
+    .rating-lg {
+        font-size: 3em;
+    }
+    .rating-animate .filled-stars {
+        transition: width 0.1s ease;
+    }
+  </style>
+</head>
+<body ng-app="myApp" ng-controller="MyController">
+<div class="rating-stars rating-lg rating-animate" ng-mousemove="changStar($event)" ng-click="clickStar()">
+  <span class="empty-stars" >
+    <span class="star" id="star">
+      <i class="glyphicon glyphicon-star-empty"></i>
+    </span>
+    <span class="star">
+      <i class="glyphicon glyphicon-star-empty"></i>
+    </span>
+    <span class="star">
+      <i class="glyphicon glyphicon-star-empty"></i>
+    </span>
+    <span class="star">
+      <i class="glyphicon glyphicon-star-empty"></i>
+    </span>
+    <span class="star">
+      <i class="glyphicon glyphicon-star-empty"></i>
+    </span>
+  </span>
+  <span class="filled-stars" ng-style="starWidth" style="width: 0%;">
+    <span class="star">
+      <i class="glyphicon glyphicon-star" ></i>
+    </span>
+    <span class="star" >
+      <i class="glyphicon glyphicon-star"></i>
+    </span>
+    <span class="star">
+      <i class="glyphicon glyphicon-star"></i>
+    </span>
+    <span class="star">
+      <i class="glyphicon glyphicon-star"></i>
+    </span>
+    <span class="star">
+      <i class="glyphicon glyphicon-star"></i>
+    </span>
+  </span>
+  <input id="input-21b" hidden value="4" type="text" class="rating rating-input" data-min="0" data-max="5" data-step="0.2" data-size="lg" required="" title="">
+</div>
+<script type='text/javascript' src="../../js/angular-1.5.5/angular.js"></script>
+<script type='text/javascript' src="../../js/jquery/jquery-1.11.1.js"></script>
+<script src="../../js/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  angular.module('myApp', [])
+    .controller('MyController', function ($scope,$anchorScroll,$timeout,$location) {
+      $scope.starWidth={
+        width:'0px'
+      }
+      $scope.X=0;
+      $scope.changStar=function ($event){
+        $scope.X = $event.clientX;
+        let XT = document.getElementById('star').clientWidth;
+        $scope.starWidth = {
+          width:$scope.X+'px'
+        }
+      }
+      $scope.clickStar=function (){
+        alert($scope.X);
+      }
+    });
+</script>
+</body>
+</html>
